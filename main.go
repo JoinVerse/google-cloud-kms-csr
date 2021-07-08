@@ -25,14 +25,14 @@ var (
 
 func main() {
 	keyFlag := flag.String("key", "", "")
-	commonNameFlag := flag.String("common-name", "", "")
-	orgFlag := flag.String("org", "", "")
+	commonNameFlag := flag.String("common-name", "centrolink.betaverse.lol", "")
+	orgFlag := flag.String("org", "Verse", "")
 	emailFlag := flag.String("email", "", "")
 	outFlag := flag.String("out", "out.csr", "")
-	orgUnitFlag := flag.String("org-unit","", "")
-	countryFlag := flag.String("country","US", "")
-	provinceFlag := flag.String("province","California", "")
-	localityFlag := flag.String("locality","San Francisco", "")
+	orgUnitFlag := flag.String("org-unit", "Verse", "")
+	countryFlag := flag.String("country", "Spain", "")
+	provinceFlag := flag.String("province", "Barcelona", "")
+	localityFlag := flag.String("locality", "Barcelona", "")
 
 	flag.Parse()
 
@@ -81,7 +81,7 @@ func main() {
 	// TODO Make this a flag or read from s.PublicKey?
 	//      https://cloud.google.com/kms/docs/algorithms
 	//      https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys#CryptoKeyVersionTemplate
-	template.SignatureAlgorithm = x509.ECDSAWithSHA256 // x509.SHA256WithRSAPSS
+	template.SignatureAlgorithm = x509.SHA256WithRSA // x509.SHA256WithRSAPSS
 
 	f, err := os.Create(*outFlag)
 	if err != nil {
